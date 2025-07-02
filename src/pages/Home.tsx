@@ -1,4 +1,5 @@
 import React from 'react';
+import { motion } from 'framer-motion';
 import Hero from '../components/sections/Hero';
 import About from '../components/sections/About';
 import Services from '../components/sections/Services';
@@ -6,14 +7,47 @@ import Process from '../components/sections/Process';
 import Contact from '../components/sections/Contact';
 
 const Home: React.FC = () => {
+  const pageVariants = {
+    hidden: { opacity: 0 },
+    visible: {
+      opacity: 1,
+      transition: {
+        staggerChildren: 0.2,
+      },
+    },
+  };
+
+  const sectionVariants = {
+    hidden: { opacity: 0, y: 20 },
+    visible: {
+      opacity: 1,
+      y: 0,
+      transition: { duration: 0.6, ease: "easeOut" },
+    },
+  };
+
   return (
-    <>
-      <Hero />
-      <About />
-      <Services />
-      <Process />
-      <Contact />
-    </>
+    <motion.div
+      variants={pageVariants}
+      initial="hidden"
+      animate="visible"
+    >
+      <motion.div variants={sectionVariants}>
+        <Hero />
+      </motion.div>
+      <motion.div variants={sectionVariants}>
+        <About />
+      </motion.div>
+      <motion.div variants={sectionVariants}>
+        <Services />
+      </motion.div>
+      <motion.div variants={sectionVariants}>
+        <Process />
+      </motion.div>
+      <motion.div variants={sectionVariants}>
+        <Contact />
+      </motion.div>
+    </motion.div>
   );
 };
 

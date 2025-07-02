@@ -5,7 +5,11 @@ import { loadSlim } from 'tsparticles-slim';
 
 const ParticleBackground: React.FC = () => {
   const particlesInit = useCallback(async (engine: Engine) => {
-    await loadSlim(engine);
+    try {
+      await loadSlim(engine);
+    } catch (error) {
+      console.warn('Particles failed to load:', error);
+    }
   }, []);
 
   return (

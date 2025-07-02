@@ -1,14 +1,17 @@
 import React, { useState, useEffect } from 'react';
-import { Link } from 'react-scroll';
-import { Link as RouterLink, useLocation } from 'react-router-dom';
 import { Menu, X } from 'lucide-react';
 import { navLinks } from '../../data/navLinks';
 
-const Header: React.FC = () => {
+interface HeaderProps {
+  currentPage: 'home' | 'privacy' | 'terms';
+  setCurrentPage: (page: 'home' | 'privacy' | 'terms') => void;
+  scrollToSection: (sectionId: string) => void;
+}
+
+const Header: React.FC<HeaderProps> = ({ currentPage, setCurrentPage, scrollToSection }) => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
-  const location = useLocation();
-  const isHomePage = location.pathname === '/';
+  const isHomePage = currentPage === 'home';
   
   useEffect(() => {
     const handleScroll = () => {
@@ -33,6 +36,18 @@ const Header: React.FC = () => {
   const closeMenu = () => {
     setIsMenuOpen(false);
   };
+
+  const handleNavClick = (sectionId: string) => {
+    scrollToSection(sectionId);
+    closeMenu();
+  };
+
+  const handleLogoClick = () => {
+    setCurrentPage('home');
+    setTimeout(() => {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }, 100);
+  };
   
   return (
     <header 
@@ -41,41 +56,29 @@ const Header: React.FC = () => {
       }`}
     >
       <div className="container mx-auto px-4 flex justify-between items-center">
-        <RouterLink to="/" className="flex items-center">
+        <button 
+          onClick={handleLogoClick}
+          className="flex items-center cursor-pointer"
+        >
           <img src="/logo.svg" alt="Zorlex AI Logo" className="h-8 w-8 mr-2" />
           <span className={`text-xl font-bold ${
             isScrolled || !isHomePage ? 'text-primary' : 'text-white'
           }`}>Zorlex AI</span>
-        </RouterLink>
+        </button>
         
         {/* Desktop Navigation */}
         <nav className="hidden md:flex">
           <ul className="flex space-x-8">
             {navLinks.map((link) => (
               <li key={link.id}>
-                {isHomePage ? (
-                  <Link
-                    to={link.id}
-                    spy={true}
-                    smooth={true}
-                    offset={-80}
-                    duration={500}
-                    className={`font-medium transition-colors duration-300 cursor-pointer ${
-                      isScrolled ? 'text-neutral-dark hover:text-primary' : 'text-white hover:text-secondary'
-                    }`}
-                  >
-                    {link.label}
-                  </Link>
-                ) : (
-                  <RouterLink
-                    to={`/#${link.id}`}
-                    className={`font-medium transition-colors duration-300 ${
-                      isScrolled || !isHomePage ? 'text-neutral-dark hover:text-primary' : 'text-white hover:text-secondary'
-                    }`}
-                  >
-                    {link.label}
-                  </RouterLink>
-                )}
+                <button
+                  onClick={() => handleNavClick(link.id)}
+                  className={`font-medium transition-colors duration-300 cursor-pointer ${
+                    isScrolled || !isHomePage ? 'text-neutral-dark hover:text-primary' : 'text-white hover:text-secondary'
+                  }`}
+                >
+                  {link.label}
+                </button>
               </li>
             ))}
           </ul>
@@ -101,10 +104,13 @@ const Header: React.FC = () => {
       >
         <div className="p-4 border-b border-neutral-light">
           <div className="flex items-center justify-between">
-            <RouterLink to="/" className="flex items-center" onClick={closeMenu}>
+            <button 
+              onClick={() => { handleLogoClick(); closeMenu(); }} 
+              className="flex items-center cursor-pointer"
+            >
               <img src="/logo.svg" alt="Zorlex AI Logo" className="h-8 w-8 mr-2" />
               <span className="text-xl font-bold text-primary">Zorlex AI</span>
-            </RouterLink>
+            </button>
             <button 
               className="text-primary focus:outline-none" 
               onClick={toggleMenu}
@@ -117,27 +123,12 @@ const Header: React.FC = () => {
         <ul className="flex flex-col p-4 space-y-4">
           {navLinks.map((link) => (
             <li key={link.id}>
-              {isHomePage ? (
-                <Link
-                  to={link.id}
-                  spy={true}
-                  smooth={true}
-                  offset={-80}
-                  duration={500}
-                  className="block text-neutral-dark hover:text-primary font-medium py-2"
-                  onClick={closeMenu}
-                >
-                  {link.label}
-                </Link>
-              ) : (
-                <RouterLink
-                  to={`/#${link.id}`}
-                  className="block text-neutral-dark hover:text-primary font-medium py-2"
-                  onClick={closeMenu}
-                >
-                  {link.label}
-                </RouterLink>
-              )}
+              <button
+                onClick={() => handleNavClick(link.id)}
+                className="block text-neutral-dark hover:text-primary font-medium py-2 w-full text-left"
+              >
+                {link.label}
+              </button>
             </li>
           ))}
         </ul>

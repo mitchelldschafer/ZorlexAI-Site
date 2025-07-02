@@ -1,10 +1,13 @@
 import React from 'react';
-import { Link } from 'react-scroll';
 import { motion } from 'framer-motion';
 import { ArrowRight } from 'lucide-react';
 import ParticleBackground from '../ui/ParticleBackground';
 
-const Hero: React.FC = () => {
+interface HeroProps {
+  scrollToSection: (sectionId: string) => void;
+}
+
+const Hero: React.FC<HeroProps> = ({ scrollToSection }) => {
   const containerVariants = {
     hidden: { opacity: 0 },
     visible: {
@@ -73,28 +76,20 @@ const Hero: React.FC = () => {
             variants={itemVariants}
             className="flex flex-col sm:flex-row gap-4"
           >
-            <Link
-              to="services"
-              spy={true}
-              smooth={true}
-              offset={-80}
-              duration={500}
+            <button
+              onClick={() => scrollToSection('services')}
               className="btn btn-primary flex items-center justify-center sm:justify-start cursor-pointer"
             >
               See My Services
               <ArrowRight size={20} className="ml-2" />
-            </Link>
+            </button>
             
-            <Link
-              to="contact"
-              spy={true}
-              smooth={true}
-              offset={-80}
-              duration={500}
+            <button
+              onClick={() => scrollToSection('contact')}
               className="btn btn-outline border-white text-white hover:bg-white hover:text-primary flex items-center justify-center sm:justify-start cursor-pointer"
             >
               Let's Connect
-            </Link>
+            </button>
           </motion.div>
         </motion.div>
       </div>

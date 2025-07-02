@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-import { motion } from 'framer-motion';
 import { Send, CheckCircle, AlertCircle, Linkedin } from 'lucide-react';
 
 const Contact: React.FC = () => {
@@ -48,79 +47,38 @@ const Contact: React.FC = () => {
     }
   };
 
-  const containerVariants = {
-    hidden: { opacity: 0 },
-    visible: {
-      opacity: 1,
-      transition: {
-        staggerChildren: 0.2,
-      },
-    },
-  };
-
-  const itemVariants = {
-    hidden: { opacity: 0, y: 20 },
-    visible: {
-      opacity: 1,
-      y: 0,
-      transition: { duration: 0.6, ease: "easeOut" },
-    },
-  };
-
   return (
     <section id="contact" className="section bg-background">
       <div className="container">
-        <motion.div
-          initial="hidden"
-          animate="visible"
-          variants={containerVariants}
-          className="max-w-2xl mx-auto"
-        >
-          <motion.span
-            variants={itemVariants}
-            className="inline-block py-1 px-3 rounded-full bg-primary bg-opacity-10 text-primary text-sm font-medium mb-4"
-          >
+        <div className="max-w-2xl mx-auto">
+          <span className="inline-block py-1 px-3 rounded-full bg-primary bg-opacity-10 text-primary text-sm font-medium mb-4">
             Get In Touch
-          </motion.span>
+          </span>
           
-          <motion.h2 
-            variants={itemVariants} 
-            className="text-3xl md:text-4xl font-bold mb-4"
-          >
+          <h2 className="text-3xl md:text-4xl font-bold mb-4">
             Let's Discuss Your AI Project
-          </motion.h2>
+          </h2>
           
-          <motion.p 
-            variants={itemVariants} 
-            className="text-neutral mb-8 max-w-lg"
-          >
+          <p className="text-neutral mb-8 max-w-lg">
             Whether you're looking to automate processes, implement AI solutions, or simply explore the possibilities, I'm here to help. Let's connect and discuss how we can transform your business.
-          </motion.p>
+          </p>
           
           {submitStatus === 'success' && (
-            <motion.div
-              initial={{ opacity: 0, y: -10 }}
-              animate={{ opacity: 1, y: 0 }}
-              className="mb-6 p-4 bg-green-50 border border-green-200 rounded-md flex items-center"
-            >
+            <div className="mb-6 p-4 bg-green-50 border border-green-200 rounded-md flex items-center">
               <CheckCircle className="text-green-600 mr-2" size={20} />
               <span className="text-green-800">Thank you! Your message has been sent successfully. I'll get back to you soon.</span>
-            </motion.div>
+            </div>
           )}
 
           {submitStatus === 'error' && (
-            <motion.div
-              initial={{ opacity: 0, y: -10 }}
-              animate={{ opacity: 1, y: 0 }}
-              className="mb-6 p-4 bg-red-50 border border-red-200 rounded-md flex items-center"
-            >
+            <div className="mb-6 p-4 bg-red-50 border border-red-200 rounded-md flex items-center">
               <AlertCircle className="text-red-600 mr-2" size={20} />
               <span className="text-red-800">Sorry, there was an error sending your message. Please try again.</span>
-            </motion.div>
+            </div>
           )}
           
-          <motion.form variants={containerVariants} className="space-y-6" onSubmit={handleSubmit}>
-            <motion.div variants={itemVariants} className="grid grid-cols-1 sm:grid-cols-2 gap-6">
+          <form className="space-y-6" onSubmit={handleSubmit}>
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
               <div>
                 <label htmlFor="name" className="block text-sm font-medium text-neutral-dark mb-1">
                   Name *
@@ -151,9 +109,9 @@ const Contact: React.FC = () => {
                   placeholder="Your email"
                 />
               </div>
-            </motion.div>
+            </div>
             
-            <motion.div variants={itemVariants}>
+            <div>
               <label htmlFor="subject" className="block text-sm font-medium text-neutral-dark mb-1">
                 Subject *
               </label>
@@ -167,9 +125,9 @@ const Contact: React.FC = () => {
                 className="w-full px-4 py-3 rounded-md border border-neutral-light focus:outline-none focus:ring-2 focus:ring-primary"
                 placeholder="What's this about?"
               />
-            </motion.div>
+            </div>
             
-            <motion.div variants={itemVariants}>
+            <div>
               <label htmlFor="message" className="block text-sm font-medium text-neutral-dark mb-1">
                 Message *
               </label>
@@ -183,10 +141,9 @@ const Contact: React.FC = () => {
                 className="w-full px-4 py-3 rounded-md border border-neutral-light focus:outline-none focus:ring-2 focus:ring-primary"
                 placeholder="Tell me about your project..."
               ></textarea>
-            </motion.div>
+            </div>
             
-            <motion.button
-              variants={itemVariants}
+            <button
               type="submit"
               disabled={isSubmitting}
               className={`btn btn-primary flex items-center justify-center w-full sm:w-auto ${
@@ -204,14 +161,11 @@ const Contact: React.FC = () => {
                   <Send size={18} className="ml-2" />
                 </>
               )}
-            </motion.button>
-          </motion.form>
+            </button>
+          </form>
 
           {/* LinkedIn Connection */}
-          <motion.div 
-            variants={itemVariants}
-            className="mt-8 pt-8 border-t border-neutral-light/30 text-center"
-          >
+          <div className="mt-8 pt-8 border-t border-neutral-light/30 text-center">
             <p className="text-neutral mb-4">
               Or connect with me directly on LinkedIn
             </p>
@@ -224,8 +178,8 @@ const Contact: React.FC = () => {
               <Linkedin size={20} className="mr-2" />
               Connect on LinkedIn
             </a>
-          </motion.div>
-        </motion.div>
+          </div>
+        </div>
       </div>
     </section>
   );

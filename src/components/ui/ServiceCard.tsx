@@ -1,5 +1,5 @@
 import React from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
+import { AnimatePresence, motion } from 'framer-motion';
 import * as LucideIcons from 'lucide-react';
 import { ChevronDown, ChevronUp } from 'lucide-react';
 import { Service } from '../../types';
@@ -14,25 +14,8 @@ const ServiceCard: React.FC<ServiceCardProps> = ({ service, expanded, toggleExpa
   // Dynamically get the icon component
   const IconComponent = LucideIcons[service.icon as keyof typeof LucideIcons];
   
-  const cardVariants = {
-    hidden: { opacity: 0, y: 20 },
-    visible: {
-      opacity: 1,
-      y: 0,
-      transition: { duration: 0.5 },
-    },
-  };
-  
   return (
-    <motion.div
-      layout
-      variants={cardVariants}
-      initial="hidden"
-      animate="visible"
-      className={`card hover:shadow-lg transition-all duration-300 ${
-        expanded ? 'shadow-lg' : ''
-      }`}
-    >
+    <div className={`card hover:shadow-lg transition-all duration-300 ${expanded ? 'shadow-lg' : ''}`}>
       <div className="p-6">
         <div className="flex items-start mb-4">
           <div className="bg-primary bg-opacity-10 p-3 rounded-full mr-4">
@@ -65,7 +48,7 @@ const ServiceCard: React.FC<ServiceCardProps> = ({ service, expanded, toggleExpa
           )}
         </AnimatePresence>
       </div>
-    </motion.div>
+    </div>
   );
 };
 

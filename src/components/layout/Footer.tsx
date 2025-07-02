@@ -1,12 +1,23 @@
 import React from 'react';
-import { Link } from 'react-scroll';
-import { Link as RouterLink, useLocation } from 'react-router-dom';
 import { Linkedin, ArrowUp } from 'lucide-react';
 import { navLinks } from '../../data/navLinks';
 
-const Footer: React.FC = () => {
-  const location = useLocation();
-  const isHomePage = location.pathname === '/';
+interface FooterProps {
+  currentPage: 'home' | 'privacy' | 'terms';
+  setCurrentPage: (page: 'home' | 'privacy' | 'terms') => void;
+  scrollToSection: (sectionId: string) => void;
+}
+
+const Footer: React.FC<FooterProps> = ({ currentPage, setCurrentPage, scrollToSection }) => {
+  const isHomePage = currentPage === 'home';
+
+  const handleNavClick = (sectionId: string) => {
+    scrollToSection(sectionId);
+  };
+
+  const scrollToTop = () => {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  };
 
   return (
     <footer className="bg-primary-dark text-white py-12">
@@ -40,25 +51,12 @@ const Footer: React.FC = () => {
             <ul className="space-y-2">
               {navLinks.map((link) => (
                 <li key={link.id}>
-                  {isHomePage ? (
-                    <Link
-                      to={link.id}
-                      spy={true}
-                      smooth={true}
-                      offset={-80}
-                      duration={500}
-                      className="text-primary-light hover:text-secondary transition-colors duration-300 cursor-pointer"
-                    >
-                      {link.label}
-                    </Link>
-                  ) : (
-                    <RouterLink
-                      to={`/#${link.id}`}
-                      className="text-primary-light hover:text-secondary transition-colors duration-300"
-                    >
-                      {link.label}
-                    </RouterLink>
-                  )}
+                  <button
+                    onClick={() => handleNavClick(link.id)}
+                    className="text-primary-light hover:text-secondary transition-colors duration-300 cursor-pointer"
+                  >
+                    {link.label}
+                  </button>
                 </li>
               ))}
             </ul>
@@ -72,35 +70,31 @@ const Footer: React.FC = () => {
             &copy; {new Date().getFullYear()} Zorlex AI. All rights reserved.
           </p>
           <div className="flex space-x-4 mt-4 md:mt-0">
-            <RouterLink 
-              to="/privacy-policy" 
-              className="text-primary-light hover:text-secondary text-sm transition-colors duration-300"
+            <button 
+              onClick={() => setCurrentPage('privacy')} 
+              className="text-primary-light hover:text-secondary text-sm transition-colors duration-300 cursor-pointer"
             >
               Privacy Policy
-            </RouterLink>
-            <RouterLink 
-              to="/terms-of-service" 
-              className="text-primary-light hover:text-secondary text-sm transition-colors duration-300"
+            </button>
+            <button 
+              onClick={() => setCurrentPage('terms')} 
+              className="text-primary-light hover:text-secondary text-sm transition-colors duration-300 cursor-pointer"
             >
               Terms of Service
-            </RouterLink>
+            </button>
           </div>
         </div>
       </div>
       
       {/* Back to top button - only show on home page */}
       {isHomePage && (
-        <Link
-          to="home"
-          spy={true}
-          smooth={true}
-          offset={-80}
-          duration={500}
+        <button
+          onClick={scrollToTop}
           className="fixed bottom-6 right-6 bg-secondary p-3 rounded-full shadow-lg cursor-pointer hover:bg-secondary-dark transition-colors duration-300"
           aria-label="Back to top"
         >
           <ArrowUp size={20} className="text-white" />
-        </Link>
+        </button>
       )}
     </footer>
   );

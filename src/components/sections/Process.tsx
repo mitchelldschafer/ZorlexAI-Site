@@ -1,28 +1,8 @@
 import React from 'react';
-import { motion } from 'framer-motion';
 import { processSteps } from '../../data/process';
 import ProcessStep from '../ui/ProcessStep';
 
 const Process: React.FC = () => {
-  const containerVariants = {
-    hidden: { opacity: 0 },
-    visible: {
-      opacity: 1,
-      transition: {
-        staggerChildren: 0.2,
-      },
-    },
-  };
-
-  const headerVariants = {
-    hidden: { opacity: 0, y: -20 },
-    visible: {
-      opacity: 1,
-      y: 0,
-      transition: { duration: 0.6, ease: "easeOut" },
-    },
-  };
-
   return (
     <section id="process" className="section bg-white relative overflow-hidden">
       {/* Background elements */}
@@ -32,33 +12,19 @@ const Process: React.FC = () => {
       </div>
       
       <div className="container relative z-10">
-        <motion.div
-          initial="hidden"
-          animate="visible"
-          variants={containerVariants}
-          className="text-center mb-16"
-        >
-          <motion.span
-            variants={headerVariants}
-            className="inline-block py-1 px-3 rounded-full bg-primary bg-opacity-10 text-primary text-sm font-medium mb-4"
-          >
+        <div className="text-center mb-16">
+          <span className="inline-block py-1 px-3 rounded-full bg-primary bg-opacity-10 text-primary text-sm font-medium mb-4">
             My Process
-          </motion.span>
+          </span>
           
-          <motion.h2
-            variants={headerVariants}
-            className="text-3xl md:text-4xl font-bold mb-4"
-          >
+          <h2 className="text-3xl md:text-4xl font-bold mb-4">
             How We Work Together
-          </motion.h2>
+          </h2>
           
-          <motion.p
-            variants={headerVariants}
-            className="max-w-2xl mx-auto text-neutral"
-          >
+          <p className="max-w-2xl mx-auto text-neutral">
             A collaborative, results-focused approach that ensures we deliver AI solutions aligned with your business objectives.
-          </motion.p>
-        </motion.div>
+          </p>
+        </div>
         
         <div className="relative">
           {/* Center line */}

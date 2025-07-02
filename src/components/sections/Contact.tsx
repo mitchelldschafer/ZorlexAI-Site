@@ -7,6 +7,7 @@ const Contact: React.FC = () => {
   const [ref, inView] = useInView({
     triggerOnce: true,
     threshold: 0.1,
+    rootMargin: '100px 0px', // Start animation earlier
   });
 
   const [formData, setFormData] = useState({
@@ -79,7 +80,7 @@ const Contact: React.FC = () => {
         <motion.div
           ref={ref}
           initial="hidden"
-          animate={inView ? "visible" : "hidden"}
+          animate="visible" // Always animate, don't wait for inView
           variants={containerVariants}
           className="max-w-2xl mx-auto"
         >

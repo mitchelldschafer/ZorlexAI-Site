@@ -8,6 +8,7 @@ const Services: React.FC = () => {
   const [ref, inView] = useInView({
     triggerOnce: true,
     threshold: 0.1,
+    rootMargin: '100px 0px', // Start animation earlier
   });
 
   const [expandedId, setExpandedId] = useState<number | null>(null);
@@ -41,7 +42,7 @@ const Services: React.FC = () => {
         <motion.div
           ref={ref}
           initial="hidden"
-          animate={inView ? "visible" : "hidden"}
+          animate="visible" // Always animate, don't wait for inView
           variants={containerVariants}
           className="text-center mb-12"
         >
@@ -69,6 +70,8 @@ const Services: React.FC = () => {
         
         <motion.div
           variants={containerVariants}
+          initial="hidden"
+          animate="visible"
           className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-8"
         >
           {services.map((service) => (

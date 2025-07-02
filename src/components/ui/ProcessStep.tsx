@@ -14,6 +14,7 @@ const ProcessStep: React.FC<ProcessStepProps> = ({ step, index, isAlternate }) =
   const [ref, inView] = useInView({
     triggerOnce: true,
     threshold: 0.2,
+    rootMargin: '50px 0px', // Start animation earlier
   });
   
   // Dynamically get the icon component
@@ -33,6 +34,7 @@ const ProcessStep: React.FC<ProcessStepProps> = ({ step, index, isAlternate }) =
       transition: {
         duration: 0.6,
         ease: "easeOut",
+        delay: index * 0.2, // Stagger animation based on index
       },
     },
   };
@@ -44,7 +46,7 @@ const ProcessStep: React.FC<ProcessStepProps> = ({ step, index, isAlternate }) =
       opacity: 1,
       transition: {
         duration: 0.4,
-        delay: 0.2,
+        delay: index * 0.2 + 0.2,
       },
     },
   };
@@ -60,7 +62,7 @@ const ProcessStep: React.FC<ProcessStepProps> = ({ step, index, isAlternate }) =
           <motion.div
             variants={containerVariants}
             initial="hidden"
-            animate={inView ? "visible" : "hidden"}
+            animate="visible" // Always animate, don't wait for inView
             className={`${
               isEven ? 'md:col-span-5 md:text-right md:pr-12' : 'md:col-span-5 md:col-start-8 md:text-left md:pl-12'
             } md:order-1 order-2 mb-6 md:mb-0`}
@@ -73,7 +75,7 @@ const ProcessStep: React.FC<ProcessStepProps> = ({ step, index, isAlternate }) =
           <motion.div
             variants={numberVariants}
             initial="hidden"
-            animate={inView ? "visible" : "hidden"}
+            animate="visible" // Always animate, don't wait for inView
             className="md:col-span-2 md:flex justify-center order-1 md:order-2 hidden"
           >
             <div className="w-14 h-14 bg-primary rounded-full flex items-center justify-center text-white font-bold text-xl relative z-10">
@@ -85,7 +87,7 @@ const ProcessStep: React.FC<ProcessStepProps> = ({ step, index, isAlternate }) =
           <motion.div
             variants={containerVariants}
             initial="hidden"
-            animate={inView ? "visible" : "hidden"}
+            animate="visible" // Always animate, don't wait for inView
             className={`${
               isEven ? 'md:col-span-5 md:col-start-8 md:text-left md:pl-12' : 'md:col-span-5 md:text-right md:pr-12'
             } order-3 hidden md:block`}
@@ -103,7 +105,7 @@ const ProcessStep: React.FC<ProcessStepProps> = ({ step, index, isAlternate }) =
           <motion.div
             variants={numberVariants}
             initial="hidden"
-            animate={inView ? "visible" : "hidden"}
+            animate="visible"
             className="flex-shrink-0"
           >
             <div className="w-12 h-12 bg-primary rounded-full flex items-center justify-center text-white font-bold">
@@ -114,7 +116,7 @@ const ProcessStep: React.FC<ProcessStepProps> = ({ step, index, isAlternate }) =
           <motion.div
             variants={containerVariants}
             initial="hidden"
-            animate={inView ? "visible" : "hidden"}
+            animate="visible"
           >
             <h3 className="text-xl font-bold mb-2">{step.title}</h3>
             <p className="text-neutral">{step.description}</p>
@@ -127,7 +129,7 @@ const ProcessStep: React.FC<ProcessStepProps> = ({ step, index, isAlternate }) =
         <motion.div
           variants={numberVariants}
           initial="hidden"
-          animate={inView ? "visible" : "hidden"}
+          animate="visible"
         >
           <div className="w-12 h-12 bg-primary rounded-full flex items-center justify-center text-white font-bold text-xl relative z-10">
             {index + 1}

@@ -7,6 +7,7 @@ const About: React.FC = () => {
   const [ref, inView] = useInView({
     triggerOnce: true,
     threshold: 0.1,
+    rootMargin: '100px 0px', // Start animation earlier
   });
 
   const containerVariants = {
@@ -59,7 +60,7 @@ const About: React.FC = () => {
           ref={ref}
           variants={containerVariants}
           initial="hidden"
-          animate={inView ? "visible" : "hidden"}
+          animate="visible" // Always animate, don't wait for inView
           className="max-w-3xl mx-auto"
         >
           <motion.span

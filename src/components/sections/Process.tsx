@@ -8,6 +8,7 @@ const Process: React.FC = () => {
   const [ref, inView] = useInView({
     triggerOnce: true,
     threshold: 0.1,
+    rootMargin: '100px 0px', // Start animation earlier
   });
 
   const containerVariants = {
@@ -41,7 +42,7 @@ const Process: React.FC = () => {
         <motion.div
           ref={ref}
           initial="hidden"
-          animate={inView ? "visible" : "hidden"}
+          animate="visible" // Always animate, don't wait for inView
           variants={containerVariants}
           className="text-center mb-16"
         >

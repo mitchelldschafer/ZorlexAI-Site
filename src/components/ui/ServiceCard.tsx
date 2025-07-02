@@ -14,12 +14,21 @@ const ServiceCard: React.FC<ServiceCardProps> = ({ service, expanded, toggleExpa
   // Dynamically get the icon component
   const IconComponent = LucideIcons[service.icon as keyof typeof LucideIcons];
   
+  const cardVariants = {
+    hidden: { opacity: 0, y: 20 },
+    visible: {
+      opacity: 1,
+      y: 0,
+      transition: { duration: 0.5 },
+    },
+  };
+  
   return (
     <motion.div
       layout
-      initial={{ opacity: 0, y: 20 }}
-      animate={{ opacity: 1, y: 0 }}
-      transition={{ duration: 0.5 }}
+      variants={cardVariants}
+      initial="hidden"
+      animate="visible"
       className={`card hover:shadow-lg transition-all duration-300 ${
         expanded ? 'shadow-lg' : ''
       }`}

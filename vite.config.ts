@@ -4,7 +4,7 @@ import react from '@vitejs/plugin-react';
 // https://vitejs.dev/config/
 export default defineConfig({
   plugins: [react()],
-  base: '/ZorlexAI-Site/', // This should match your GitHub repository name exactly
+  base: '/sb1-edtsxqbb/', // Updated to match the actual repository name
   optimizeDeps: {
     exclude: ['lucide-react'],
   },

@@ -1,16 +1,9 @@
 import React, { useState } from 'react';
 import { motion } from 'framer-motion';
-import { useInView } from 'react-intersection-observer';
 import { services } from '../../data/services';
 import ServiceCard from '../ui/ServiceCard';
 
 const Services: React.FC = () => {
-  const [ref, inView] = useInView({
-    triggerOnce: true,
-    threshold: 0.1,
-    rootMargin: '100px 0px', // Start animation earlier
-  });
-
   const [expandedId, setExpandedId] = useState<number | null>(null);
 
   const toggleExpand = (id: number) => {
@@ -40,9 +33,8 @@ const Services: React.FC = () => {
     <section id="services" className="section bg-white">
       <div className="container">
         <motion.div
-          ref={ref}
           initial="hidden"
-          animate="visible" // Always animate, don't wait for inView
+          animate="visible"
           variants={containerVariants}
           className="text-center mb-12"
         >

@@ -1,15 +1,8 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { useInView } from 'react-intersection-observer';
 import { Code, Cog, MessageSquare, Palette } from 'lucide-react';
 
 const About: React.FC = () => {
-  const [ref, inView] = useInView({
-    triggerOnce: true,
-    threshold: 0.1,
-    rootMargin: '100px 0px', // Start animation earlier
-  });
-
   const containerVariants = {
     hidden: { opacity: 0 },
     visible: {
@@ -57,10 +50,9 @@ const About: React.FC = () => {
     <section id="about" className="section bg-background">
       <div className="container">
         <motion.div
-          ref={ref}
           variants={containerVariants}
           initial="hidden"
-          animate="visible" // Always animate, don't wait for inView
+          animate="visible"
           className="max-w-3xl mx-auto"
         >
           <motion.span

@@ -1,16 +1,9 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { useInView } from 'react-intersection-observer';
 import { processSteps } from '../../data/process';
 import ProcessStep from '../ui/ProcessStep';
 
 const Process: React.FC = () => {
-  const [ref, inView] = useInView({
-    triggerOnce: true,
-    threshold: 0.1,
-    rootMargin: '100px 0px', // Start animation earlier
-  });
-
   const containerVariants = {
     hidden: { opacity: 0 },
     visible: {
@@ -40,9 +33,8 @@ const Process: React.FC = () => {
       
       <div className="container relative z-10">
         <motion.div
-          ref={ref}
           initial="hidden"
-          animate="visible" // Always animate, don't wait for inView
+          animate="visible"
           variants={containerVariants}
           className="text-center mb-16"
         >

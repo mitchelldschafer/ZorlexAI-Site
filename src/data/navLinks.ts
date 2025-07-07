@@ -14,6 +14,10 @@ export const navLinks: NavLink[] = [
     label: 'Services',
   },
   {
+    id: 'founder',
+    label: 'Founder',
+  },
+  {
     id: 'process',
     label: 'Process',
   },

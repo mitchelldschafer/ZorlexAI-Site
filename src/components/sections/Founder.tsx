@@ -70,7 +70,7 @@ const Founder: React.FC = () => {
                 <div className="absolute inset-0 bg-gradient-primary rounded-2xl transform rotate-3"></div>
                 <div className="relative bg-white p-2 rounded-2xl shadow-xl">
                   <img
-                    src="/prof pic 2025.jpg"
+                    src="./prof pic 2025.jpg"
                     alt="Mitchell Schafer - Founder of Zorlex AI"
                     className="w-full h-auto rounded-xl object-cover"
                   />

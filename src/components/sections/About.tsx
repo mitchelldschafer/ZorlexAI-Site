@@ -38,11 +38,11 @@ const About: React.FC = () => {
           </h2>
           
           <p className="mb-4">
-            With extensive experience across multiple industries, I specialize in implementing AI solutions that transform complex workflows and automate repetitive tasks. My expertise lies in identifying opportunities for automation and developing tailored solutions that deliver measurable business value.
+            With extensive experience across multiple industries, we specialize in implementing AI solutions that transform complex workflows and automate repetitive tasks. Our expertise lies in identifying opportunities for automation and developing tailored solutions that deliver measurable business value.
           </p>
           
           <p className="mb-6">
-            By combining technical expertise with a deep understanding of business processes, I help organizations streamline their operations and achieve significant efficiency gains through strategic AI implementation and process automation.
+            By combining technical expertise with a deep understanding of business processes, we help organizations streamline their operations and achieve significant efficiency gains through strategic AI implementation and process automation.
           </p>
           
           <h3 className="text-xl font-bold mb-4">

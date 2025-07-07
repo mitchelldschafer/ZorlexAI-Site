@@ -52,7 +52,7 @@ const Founder: React.FC = () => {
             </span>
             
             <h2 className="text-3xl md:text-4xl font-bold mb-4">
-              Meet the Founder
+              Meet Our Founder
             </h2>
             
             <p className="max-w-2xl mx-auto text-neutral">
@@ -97,11 +97,11 @@ const Founder: React.FC = () => {
                 </p>
                 
                 <p>
-                  Drawing from extensive experience across multiple industries, Mitchell specializes in identifying automation opportunities that deliver measurable ROI while maintaining the human touch that makes businesses successful.
+                  Drawing from extensive experience across multiple industries, our team specializes in identifying automation opportunities that deliver measurable ROI while maintaining the human touch that makes businesses successful.
                 </p>
                 
                 <p>
-                  His approach combines deep technical expertise with strategic business insight, ensuring that every AI implementation not only works flawlessly but also drives meaningful growth and efficiency gains for his clients.
+                  Our approach combines deep technical expertise with strategic business insight, ensuring that every AI implementation not only works flawlessly but also drives meaningful growth and efficiency gains for our clients.
                 </p>
               </div>
 

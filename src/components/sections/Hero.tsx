@@ -80,7 +80,7 @@ const Hero: React.FC<HeroProps> = ({ scrollToSection }) => {
               onClick={() => scrollToSection('services')}
               className="btn btn-primary flex items-center justify-center sm:justify-start cursor-pointer"
             >
-              See My Services
+              See Our Services
               <ArrowRight size={20} className="ml-2" />
             </button>
             

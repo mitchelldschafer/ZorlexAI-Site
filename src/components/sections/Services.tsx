@@ -22,7 +22,7 @@ const Services: React.FC = () => {
           </h2>
           
           <p className="max-w-2xl mx-auto text-neutral">
-            From strategic planning to implementation and optimization, I provide end-to-end AI services designed to transform your business operations.
+            From strategic planning to implementation and optimization, we provide end-to-end AI services designed to transform your business operations.
           </p>
         </div>
         

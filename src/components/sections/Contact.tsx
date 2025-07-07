@@ -60,13 +60,13 @@ const Contact: React.FC = () => {
           </h2>
           
           <p className="text-neutral mb-8 max-w-lg">
-            Whether you're looking to automate processes, implement AI solutions, or simply explore the possibilities, I'm here to help. Let's connect and discuss how we can transform your business.
+            Whether you're looking to automate processes, implement AI solutions, or simply explore the possibilities, we're here to help. Let's connect and discuss how we can transform your business.
           </p>
           
           {submitStatus === 'success' && (
             <div className="mb-6 p-4 bg-green-50 border border-green-200 rounded-md flex items-center">
               <CheckCircle className="text-green-600 mr-2" size={20} />
-              <span className="text-green-800">Thank you! Your message has been sent successfully. I'll get back to you soon.</span>
+              <span className="text-green-800">Thank you! Your message has been sent successfully. We'll get back to you soon.</span>
             </div>
           )}
 
@@ -167,7 +167,7 @@ const Contact: React.FC = () => {
           {/* LinkedIn Connection */}
           <div className="mt-8 pt-8 border-t border-neutral-light/30 text-center">
             <p className="text-neutral mb-4">
-              Or connect with me directly on LinkedIn
+              Or connect with us directly on LinkedIn
             </p>
             <a
               href="https://www.linkedin.com/in/mitchell-schafer-4972a615b/"

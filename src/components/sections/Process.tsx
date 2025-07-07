@@ -14,7 +14,7 @@ const Process: React.FC = () => {
       <div className="container relative z-10">
         <div className="text-center mb-16">
           <span className="inline-block py-1 px-3 rounded-full bg-primary bg-opacity-10 text-primary text-sm font-medium mb-4">
-            My Process
+            Our Process
           </span>
           
           <h2 className="text-3xl md:text-4xl font-bold mb-4">

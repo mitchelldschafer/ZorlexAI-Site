@@ -46,7 +46,7 @@ const About: React.FC = () => {
           </p>
           
           <h3 className="text-xl font-bold mb-4">
-            Expertise
+            Our Expertise
           </h3>
           
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 mb-6">
